@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFEBEE" />
+      <stop offset="100%" stop-color="#FFCDD2" />
+    </linearGradient>
+
+    <!-- Icon Gradient -->
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E53935" />
+      <stop offset="100%" stop-color="#B71C1C" />
+    </linearGradient>
+
+    <!-- Drop Shadow -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="15" stdDeviation="15" flood-color="#D32F2F" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bgGrad)" />
+
+  <!-- Soft Blob/Glow behind icon -->
+  <circle cx="400" cy="200" r="120" fill="#FFF" opacity="0.4" filter="blur(30px)" />
+
+  <!-- Target Graphic -->
+  <g transform="translate(400, 200)" filter="url(#shadow)">
+    <circle cx="0" cy="0" r="70" fill="#FFF" />
+    <circle cx="0" cy="0" r="50" fill="url(#iconGrad)" />
+    <circle cx="0" cy="0" r="30" fill="#FFF" />
+    <circle cx="0" cy="0" r="15" fill="url(#iconGrad)" />
+    
+    <!-- Arrow -->
+    <path d="M 40 -40 L 90 -90 M 90 -90 L 70 -95 M 90 -90 L 95 -70" stroke="url(#iconGrad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 20 -20 L 40 -40" stroke="#FFF" stroke-width="8" stroke-linecap="round" />
+  </g>
+</svg>

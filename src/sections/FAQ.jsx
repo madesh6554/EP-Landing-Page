@@ -1,0 +1,77 @@
+import { motion } from 'framer-motion'
+import './FAQ.css'
+import { useState } from 'react'
+
+const faqs = [
+  {
+    q: 'Where are the offline classes held?',
+    a: 'Our offline classroom training is held exclusively in Coimbatore. You can visit our centre, meet the trainer, and attend a free demo class before enrolling.',
+  },
+  {
+    q: 'What is the class format?',
+    a: 'We combine 1-on-1 trainer guidance with group learning. The classroom setting ensures structured lessons, daily conversation practice, and real-time feedback.',
+  },
+  {
+    q: 'Who is this training designed for?',
+    a: 'This training is for college students, job seekers, working professionals, and anyone who wants to improve how they communicate in personal, professional, and social life.',
+  },
+  {
+    q: 'Can I attend a demo class before enrolling?',
+    a: 'Yes! We offer a free demo class at our Coimbatore centre. Come in, experience the classroom, meet the trainer, and decide from there — no pressure.',
+  },
+  {
+    q: 'Is there a money-back guarantee?',
+    a: 'Yes. English Partner offers a 7-day money-back guarantee. If you\'re not satisfied within the first 7 days, you can request a full refund.',
+  },
+  {
+    q: 'How do I book a demo class?',
+    a: 'Simply click "Book a Free Demo" anywhere on this page and it will open WhatsApp with a pre-filled message. Our team will get back to you within minutes.',
+  },
+]
+
+function FAQItem({ q, a, isOpen, onClick }) {
+  return (
+    <div className={`faq-item ${isOpen ? 'faq-item--open' : ''}`} onClick={onClick}>
+      <div className="faq-question">
+        <span>{q}</span>
+        <span className="faq-icon">{isOpen ? '−' : '+'}</span>
+      </div>
+      <motion.div
+        className="faq-answer"
+        initial={false}
+        animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+      >
+        <p>{a}</p>
+      </motion.div>
+    </div>
+  )
+}
+
+export default function FAQ() {
+  const [openIdx, setOpenIdx] = useState(null)
+
+  return (
+    <section className="faq-section" id="faq">
+      <div className="section-header">
+        <span className="section-label">FAQ</span>
+        <h2 className="section-title">
+          Frequently asked <span className="title-accent">questions</span>
+        </h2>
+        <p className="section-sub">Everything you need to know before booking your free demo.</p>
+      </div>
+
+      <div className="faq-list">
+        {faqs.map((f, i) => (
+          <FAQItem
+            key={i}
+            q={f.q}
+            a={f.a}
+            isOpen={openIdx === i}
+            onClick={() => setOpenIdx(openIdx === i ? null : i)}
+          />
+        ))}
+      </div>
+    </section>
+  )
+}

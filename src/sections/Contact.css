@@ -1,0 +1,250 @@
+/* ── Contact Section ── */
+.contact-section {
+  background: var(--bg-primary);
+  padding: 100px clamp(20px, 6vw, 100px);
+}
+
+/* CTA Banner */
+.cta-banner {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+  border-radius: 28px;
+  overflow: hidden;
+  padding: 70px 40px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 60px;
+}
+
+.cta-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  width: 350px;
+  height: 350px;
+}
+
+.cta-glow--red {
+  background: rgba(200,16,46,0.06);
+  top: -20%;
+  left: -10%;
+}
+
+.cta-glow--blue {
+  background: rgba(27,46,107,0.06);
+  bottom: -20%;
+  right: -10%;
+}
+
+.cta-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.cta-heading {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  max-width: 640px;
+}
+
+.cta-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(14px, 1.3vw, 17px);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 32px;
+  border-radius: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.2s;
+}
+
+.cta-btn--primary {
+  background: var(--ep-red);
+  color: #fff;
+  box-shadow: 0 6px 24px rgba(200,16,46,0.3);
+}
+
+.cta-btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(200,16,46,0.45);
+}
+
+.cta-btn--ghost {
+  background: rgba(0,0,0,0.03);
+  color: #0f172a;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.cta-btn--ghost:hover {
+  background: rgba(0,0,0,0.06);
+  color: #000;
+  transform: translateY(-2px);
+}
+
+/* Info Cards */
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.contact-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.02);
+  border-radius: 16px;
+  padding: 24px 20px;
+}
+
+.contact-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.contact-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.contact-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.5;
+}
+
+/* ── Map Section ── */
+.contact-map {
+  max-width: 900px;
+  margin: 48px auto 0;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.map-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 28px 32px 0;
+}
+
+.map-pin {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.map-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(18px, 2.5vw, 24px);
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 4px;
+}
+
+.map-address {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.map-frame {
+  width: 100%;
+  height: 340px;
+  margin-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.map-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.map-directions-btn {
+  display: block;
+  text-align: center;
+  padding: 16px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ep-blue);
+  text-decoration: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  transition: background 0.2s, color 0.2s;
+}
+
+.map-directions-btn:hover {
+  background: rgba(27, 46, 107, 0.04);
+  color: var(--ep-red);
+}
+
+/* ── Map Responsive ── */
+@media (max-width: 640px) {
+  .contact-map {
+    margin-top: 32px;
+    border-radius: 18px;
+  }
+
+  .map-header {
+    padding: 20px 20px 0;
+    gap: 12px;
+  }
+
+  .map-pin {
+    font-size: 24px;
+  }
+
+  .map-frame {
+    height: 260px;
+    margin-top: 16px;
+  }
+
+  .map-directions-btn {
+    padding: 14px;
+    font-size: 14px;
+  }
+}

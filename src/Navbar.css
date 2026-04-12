@@ -1,0 +1,157 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(20px, 4vw, 60px);
+  height: 68px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.05);
+}
+
+/* ── Logo in navbar ── */
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-logo-tiles {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.nav-logo-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--ep-blue);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+  opacity: 0.7;
+}
+
+.nav-logo-tile {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 0;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.nav-first-char {
+  display: inline-block;
+}
+
+.nav-rest-clip {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.nav-logo-tile.red {
+  background: var(--ep-red);
+  border-radius: 7px 0 0 7px;
+  box-shadow: 0 0 18px rgba(200, 16, 46, 0.3);
+}
+
+.nav-logo-tile.blue {
+  background: var(--ep-blue);
+  border-radius: 0 7px 7px 0;
+  box-shadow: 0 0 18px rgba(27, 46, 107, 0.4);
+}
+
+/* ── Nav links ── */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: clamp(20px, 3vw, 40px);
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #0f172a;
+}
+
+/* ── CTA button ── */
+.nav-cta {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--ep-red);
+  padding: 9px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px rgba(200, 16, 46, 0.35);
+  white-space: nowrap;
+}
+
+.nav-cta:hover {
+  background: #a30d26;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(200, 16, 46, 0.45);
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-logo-tile {
+    font-size: 12px;
+    padding: 4px 9px;
+    letter-spacing: 0.1px;
+  }
+
+  .nav-logo-tile.red  { border-radius: 5px 0 0 5px; }
+  .nav-logo-tile.blue { border-radius: 0 5px 5px 0; }
+
+  .nav-logo-subtitle {
+    font-size: 8px;
+    letter-spacing: 1.2px;
+  }
+}
+
+@media (max-width: 380px) {
+  .nav-logo-tile {
+    font-size: 11px;
+    padding: 3px 7px;
+  }
+
+  .nav-logo-subtitle {
+    font-size: 7.5px;
+  }
+}

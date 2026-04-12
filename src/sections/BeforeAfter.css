@@ -1,0 +1,477 @@
+/* ── Before/After Section ── */
+.before-after-section {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(96, 165, 250, 0.08) 0%, transparent 55%),
+    radial-gradient(circle at 90% 90%, rgba(236, 72, 153, 0.08) 0%, transparent 55%),
+    var(--bg-primary);
+  position: relative;
+  /* Tall scroll track → pinned inner content consumes ~2.5 viewports of scroll */
+  height: 350vh;
+}
+
+/* Inner pinned stage — sticks to viewport while the outer track scrolls past */
+.ba-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px clamp(20px, 6vw, 100px);
+  overflow: hidden;
+}
+
+@media (max-width: 720px) {
+  .before-after-section {
+    height: 300vh;
+  }
+  .ba-sticky {
+    padding: 24px 14px;
+    justify-content: flex-start;
+    padding-top: 80px;
+  }
+}
+
+.ba-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ── Column Headers ── */
+.ba-col-headers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  padding: 0 8px;
+}
+
+.ba-col-header {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(12px, 1.3vw, 14px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Default colors — get overridden by the active-state classes below */
+.ba-col-header--before { color: #94a3b8; transition: color 0.4s ease; }
+.ba-col-header--after  { color: #94a3b8; transition: color 0.4s ease; }
+
+.ba-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #94a3b8;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Stage 1 — transformation hasn't started: "Before Training" is red */
+.ba-col-headers.is-before-active .ba-col-header--before {
+  color: var(--ep-red);
+}
+.ba-col-headers.is-before-active .ba-dot--before {
+  background: var(--ep-red);
+  box-shadow: 0 0 12px rgba(200, 16, 46, 0.5);
+}
+
+/* Stage 2 — transformation passed halfway: red swaps to "After Training" */
+.ba-col-headers.is-after-active .ba-col-header--after {
+  color: var(--ep-red);
+}
+.ba-col-headers.is-after-active .ba-dot--after {
+  background: var(--ep-red);
+  box-shadow: 0 0 12px rgba(200, 16, 46, 0.5);
+}
+
+/* ── Comparison Container ── */
+.ba-container {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  user-select: none;
+  padding: 36px 24px;
+  box-shadow:
+    0 20px 60px -20px rgba(15, 23, 42, 0.18),
+    0 4px 16px -6px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* ── Split Background ── */
+.ba-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ba-bg--before {
+  background: linear-gradient(135deg, #eef2f7 0%, #e2e8f0 100%);
+}
+
+.ba-bg--after {
+  background:
+    radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.18), transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(96, 165, 250, 0.18), transparent 50%),
+    linear-gradient(135deg, #fff5f7 0%, #f0fdf4 50%, #eff6ff 100%);
+}
+
+/* ── Horizontal Card Row ── */
+.ba-cards {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+/* ── Individual Card (glass) ── */
+.ba-card {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  min-height: 240px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 8px 24px -10px rgba(15, 23, 42, 0.15);
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.4s ease;
+}
+
+.ba-card.is-after {
+  transform: translateY(-4px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 16px 36px -12px rgba(200, 16, 46, 0.25);
+}
+
+/* ── Before/After Layers within each card ── */
+.ba-card-state {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 22px 16px;
+  text-align: center;
+  will-change: clip-path;
+}
+
+.ba-card-state--before {
+  background: linear-gradient(180deg, rgba(226, 232, 240, 0.35), rgba(203, 213, 225, 0.25));
+}
+
+.ba-card-state--after {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 237, 243, 0.65));
+}
+
+/* ── Icon Bubble ── */
+.ba-card-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  flex-shrink: 0;
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.9),
+    0 8px 20px -6px rgba(15, 23, 42, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.ba-card-icon--before {
+  background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+  filter: grayscale(0.4);
+}
+
+.ba-card-icon--after {
+  background: linear-gradient(135deg, #fecaca, #fda4af);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.9),
+    0 10px 24px -6px rgba(200, 16, 46, 0.4);
+  animation: ba-icon-pop 0.5s ease;
+}
+
+@keyframes ba-icon-pop {
+  0%   { transform: scale(0.85); }
+  60%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* ── Tag ── */
+.ba-card-tag {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.ba-card-tag--before {
+  color: #64748b;
+  background: rgba(148, 163, 184, 0.2);
+}
+
+.ba-card-tag--after {
+  color: var(--ep-red);
+  background: rgba(200, 16, 46, 0.14);
+}
+
+/* ── Label ── */
+.ba-card-label {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(13px, 1.2vw, 14.5px);
+  font-weight: 600;
+  line-height: 1.4;
+  max-width: 100%;
+}
+
+.ba-card-label--before { color: #64748b; }
+.ba-card-label--after  { color: #0f172a; }
+
+/* ── Vertical Slider ── */
+.ba-slider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 20;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.ba-slider-line {
+  width: 3px;
+  flex: 1;
+  background: linear-gradient(to bottom, var(--ep-red), var(--ep-blue));
+  border-radius: 3px;
+  box-shadow:
+    0 0 16px rgba(200, 16, 46, 0.45),
+    0 0 32px rgba(96, 165, 250, 0.25);
+}
+
+.ba-slider-handle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3px solid var(--ep-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 6px 24px rgba(200, 16, 46, 0.25),
+    0 0 0 6px rgba(200, 16, 46, 0.1);
+  color: var(--ep-red);
+  pointer-events: none;
+}
+
+.ba-slider-handle svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ── Hint ── */
+.ba-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  letter-spacing: 0.3px;
+}
+
+.ba-hint-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ep-red);
+  box-shadow: 0 0 10px rgba(200, 16, 46, 0.5);
+  animation: ba-hint-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes ba-hint-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.4); opacity: 0.6; }
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .ba-cards {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+
+  .ba-card {
+    min-height: 200px;
+  }
+
+  .ba-card-state {
+    padding: 16px 8px;
+    gap: 10px;
+  }
+
+  .ba-card-icon {
+    width: 54px;
+    height: 54px;
+    font-size: 26px;
+  }
+
+  .ba-card-tag {
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+  }
+
+  .ba-card-label {
+    font-size: 11.5px;
+    line-height: 1.3;
+  }
+
+  .ba-container {
+    padding: 24px 14px;
+    border-radius: 22px;
+  }
+}
+
+/* ── Mobile: stack cards vertically, each card is a horizontal row ── */
+@media (max-width: 640px) {
+  .before-after-section {
+    /* Shorter scroll track for smaller list + quicker pass-through */
+    height: 280vh;
+  }
+
+  .ba-sticky {
+    padding: 20px 14px;
+    padding-top: 24px;
+    justify-content: flex-start;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .ba-wrapper {
+    max-width: 100%;
+  }
+
+  .ba-col-headers {
+    padding: 0 4px;
+    margin-bottom: 10px;
+  }
+
+  .ba-col-header {
+    font-size: 10.5px;
+    letter-spacing: 1px;
+  }
+
+  .ba-container {
+    padding: 14px 10px;
+    border-radius: 18px;
+  }
+
+  .ba-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .ba-card {
+    aspect-ratio: auto;
+    min-height: 72px;
+    height: 72px;
+    border-radius: 14px;
+  }
+
+  .ba-card-state {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 0 14px;
+    text-align: left;
+  }
+
+  .ba-card-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
+  }
+
+  .ba-card-tag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 0.8px;
+    padding: 2px 8px;
+    margin-right: 2px;
+  }
+
+  .ba-card-label {
+    font-size: 12.5px;
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  /* Hide the big vertical slider bar on mobile — replace with a top progress bar */
+  .ba-slider {
+    display: none;
+  }
+
+  /* Top progress bar above the cards */
+  .ba-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: var(--ba-progress, 0%);
+    background: linear-gradient(to right, var(--ep-red), var(--ep-blue));
+    box-shadow: 0 0 12px rgba(200, 16, 46, 0.5);
+    z-index: 25;
+    transition: width 0.05s linear;
+  }
+
+  .ba-hint {
+    font-size: 11.5px;
+    margin-top: 14px;
+  }
+}
+
+/* Extra-narrow phones */
+@media (max-width: 380px) {
+  .ba-card {
+    min-height: 66px;
+    height: 66px;
+  }
+  .ba-card-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 19px;
+  }
+  .ba-card-tag {
+    display: none;
+  }
+  .ba-card-label {
+    font-size: 11.5px;
+  }
+}
