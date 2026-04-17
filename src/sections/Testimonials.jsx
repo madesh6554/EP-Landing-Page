@@ -244,7 +244,8 @@ export default function Testimonials() {
       const deltaTime = Math.min(time - lastTime, 50); // cap delta to avoid jumps
       lastTime = time;
 
-      if (!isHoveredRef.current && !isDraggingRef.current) {
+      const videoPlaying = activeVideoRef.current && !activeVideoRef.current.paused;
+      if (!isHoveredRef.current && !isDraggingRef.current && !videoPlaying) {
         containerRef.current.scrollLeft += speed * deltaTime;
       }
 
