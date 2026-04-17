@@ -4,24 +4,24 @@ import './BeforeAfter.css'
 
 const transformations = [
   {
-    before: { img: '/assets/transformations/before-1.webp', text: 'Hesitate to speak in public',    tag: 'Nervous' },
-    after:  { img: '/assets/transformations/after-1.webp',  text: 'Speak fluently & clearly',        tag: 'Confident' },
+    before: { img: '/assets/transformations/before-1.jpg', text: 'Hesitate to speak in public',    tag: 'Nervous' },
+    after:  { img: '/assets/transformations/after-1.jpg',  text: 'Speak fluently & clearly',        tag: 'Confident' },
   },
   {
-    before: { img: '/assets/transformations/before-2.webp', text: 'Fear of making mistakes',        tag: 'Anxious' },
-    after:  { img: '/assets/transformations/after-2.webp',  text: 'Learn from mistakes boldly',     tag: 'Fearless' },
+    before: { img: '/assets/transformations/before-2.jpg', text: 'Fear of making mistakes',        tag: 'Anxious' },
+    after:  { img: '/assets/transformations/after-2.jpg',  text: 'Learn from mistakes boldly',     tag: 'Fearless' },
   },
   {
-    before: { img: '/assets/transformations/before-3.webp', text: 'Silent in meetings',             tag: 'Unheard' },
-    after:  { img: '/assets/transformations/after-3.webp',  text: 'Lead meetings & presentations',   tag: 'Leader' },
+    before: { img: '/assets/transformations/before-3.jpg', text: 'Silent in meetings',             tag: 'Unheard' },
+    after:  { img: '/assets/transformations/after-3.jpg',  text: 'Lead meetings & presentations',   tag: 'Leader' },
   },
   {
     before: { img: '/assets/transformations/before-4.webp', text: 'Struggle with vocabulary',       tag: 'Limited' },
-    after:  { img: '/assets/transformations/after-4.webp',  text: 'Rich vocabulary & expressions',   tag: 'Eloquent' },
+    after:  { img: '/assets/transformations/after-4.jpg',  text: 'Rich vocabulary & expressions',   tag: 'Eloquent' },
   },
   {
-    before: { img: '/assets/transformations/before-5.webp', text: 'Avoid English conversations',    tag: 'Withdrawn' },
-    after:  { img: '/assets/transformations/after-5.webp',  text: 'Enjoy English conversations',    tag: 'Engaging' },
+    before: { img: '/assets/transformations/before-5.jpg', text: 'Avoid English conversations',    tag: 'Withdrawn' },
+    after:  { img: '/assets/transformations/after-5.jpg',  text: 'Enjoy English conversations',    tag: 'Engaging' },
   },
 ]
 
