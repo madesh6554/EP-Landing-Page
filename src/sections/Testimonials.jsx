@@ -154,12 +154,14 @@ function VideoCard({ v }) {
     }
   }
 
+  const isTouchDevice = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches
+
   return (
     <div
       ref={wrapperRef}
       className="video-card-wrapper"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={isTouchDevice ? undefined : handleMouseEnter}
+      onMouseLeave={isTouchDevice ? undefined : handleMouseLeave}
       onClick={handleClick}
     >
       <div className="video-card-poster">
