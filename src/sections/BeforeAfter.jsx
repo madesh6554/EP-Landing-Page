@@ -16,7 +16,7 @@ const transformations = [
     after:  { img: '/assets/transformations/after-3.jpg',  text: 'Lead meetings & presentations',   tag: 'Leader' },
   },
   {
-    before: { img: '/assets/transformations/before-4.webp', text: 'Struggle with vocabulary',       tag: 'Limited' },
+    before: { img: '/assets/transformations/before-4.jpg', text: 'Struggle with vocabulary',       tag: 'Limited' },
     after:  { img: '/assets/transformations/after-4.jpg',  text: 'Rich vocabulary & expressions',   tag: 'Eloquent' },
   },
   {
